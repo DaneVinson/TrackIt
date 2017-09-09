@@ -1,0 +1,68 @@
+﻿<form [formGroup]="viewForm">
+    <!--DataPoints search/list-->
+    <div *ngIf="!dataPoint">
+        <!--Button bar-->
+        <div>
+            <button (click)="search()" class="btn btn-primary" [disabled]="!from.valid || !to.valid"><i class="fa fa-search"></i>&nbsp;Search</button>
+            <button (click)="newDataPoint()" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;New</button>
+        </div>
+        <!--Search controls-->
+        <div class="row">
+            <div class="form-group col-sm-6 col-lg-5" [ngClass]="{'has-danger': from.invalid}">
+                <label class="form-control-label" for="fromInput">From</label>
+                <input [formControl]="viewForm.controls['from']" class="form-control" type="text" id="fromInput" placeholder="day/month/year" autocomplete="off">
+            </div>
+            <div class="form-group col-sm-6 col-lg-5 " [ngClass]="{'has-danger': to.invalid}">
+                <label class="form-control-label" for="toInput">To</label>
+                <input [formControl]="viewForm.controls['to']" class="form-control" type="text" id="toInput" placeholder="day/month/year" autocomplete="off">
+            </div>
+        </div>
+        <!--DataPoints list-->
+        <table *ngIf="hasDataPoints()" class="table table-sm">
+            <thead class="thead-default">
+                <tr>
+                    <th></th>
+                    <th>Date</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dataPoint of dataPoints">
+                    <td><a (click)="editDataPoint(dataPoint.id)" href="javascript:void(0)"><i class="fa fa-edit"></i></a></td>
+                    <td>{{dataPoint.stamp}}</td>
+                    <td>{{dataPoint.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--DataPoint edit-->
+    <div *ngIf="dataPoint">
+        <!--Button bar-->
+        <div>
+            <button (click)="save()" [disabled]="!deleted && (!stamp.valid || !value.valid || !(stamp.dirty || value.dirty))" class="btn" [ngClass]="{'btn-primary': !deleted, 'btn-danger': deleted}"><i class="fa fa-save"></i>&nbsp;Save</button>
+            <button (click)="cancel()" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp;Cancel</button>
+            <button *ngIf="!new && !deleted" (click)="delete()" class="btn btn-danger"><i class="fa fa-remove"></i>&nbsp;Delete</button>
+        </div>
+        <!--Edit controls-->
+        <br />
+        <h4>{{getEditCaption()}}</h4>
+        <br />
+        <div class="row">
+            <!--Stamp-->
+            <div class="form-group col-sm-6 col-lg-5" [ngClass]="{'has-danger': !deleted && stamp.invalid}">
+                <label class="form-control-label" for="stampInput">Date</label>
+                <input [formControl]="viewForm.controls['stamp']" class="form-control" type="text" id="stampInput" placeholder="day/month/year" autocomplete="off">
+            </div>
+            <!--Value-->
+            <div class="form-group col-sm-6 col-lg-5 " [ngClass]="{'has-danger': !deleted && value.invalid}">
+                <label class="form-control-label" for="valueInput">Value</label>
+                <input [formControl]="viewForm.controls['value']" class="form-control" type="number" id="valueInput" placeholder="0" autocomplete="off">
+            </div>
+            <!--Id-->
+            <div *ngIf="!new" class="form-group col-sm-8 col-lg-5">
+                <label for="idInput">Id</label>
+                <input [formControl]="viewForm.controls['id']" class="form-control" type="text" id="idInput">
+            </div>
+        </div>
+    </div>
+</form>

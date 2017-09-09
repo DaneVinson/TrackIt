@@ -1,0 +1,6 @@
+﻿<!--Categories-->
+<div class="list-group">
+    <a *ngFor="let category of categories" (click)="toggleSelected(category.id)" class="list-group-item" [ngClass]="{active: isSelected(category.id)}" href="javascript:void(0)">
+        {{category.description}}<i *ngIf="category.dataPoints && category.dataPoints.length > 0" class="fa pull-right fa-database">&nbsp;{{category.dataPoints.length}}</i><i *ngIf="category.dirty" class="fa pull-right fa-edit">&nbsp;</i>
+    </a>
+</div>

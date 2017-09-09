@@ -1,0 +1,30 @@
+﻿<div *ngIf="category && category.id">
+    <!--Category tabs-->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="javascript:void(0)" (click)="setDisplayMode('details')" class="nav-link" [ngClass]="displayMode == 'details' ? 'active' : ''"><i class="fa fa-edit"></i> Details</a>
+        </li>
+        <li *ngIf="category && !category.new" class="nav-item">
+            <a href="javascript:void(0)" (click)="setDisplayMode('data')" class="nav-link" [ngClass]="displayMode == 'data' ? 'active' : ''"><i class="fa fa-database"></i> Data</a>
+        </li>
+        <li *ngIf="category && !category.new" class="nav-item">
+            <a href="javascript:void(0)" (click)="setDisplayMode('charting')" class="nav-link" [ngClass]="displayMode == 'charting' ? 'active' : ''"><i class="fa fa-bar-chart"></i> Charting</a>
+        </li>
+    </ul>
+    <br/>
+    <!--category view selector-->
+    <div class="container">
+        <!--details-->
+        <div *ngIf="displayMode == 'details'">
+            <ti-category-details [category]="category" [originalCategory]="originalCategory" (categoryChanged)="categoryChanged($event)" (setBusy)="setBusy($event)"></ti-category-details>
+        </div>
+        <!--data-->
+        <div *ngIf="displayMode == 'data'">
+            <ti-category-data [categoryId]="category.id" [dataPoints]="category.dataPoints" (setBusy)="setBusy($event)" (updateDataPoints)="dataPointsChanged($event)"></ti-category-data>
+        </div>
+        <!--chart-->
+        <div *ngIf="displayMode == 'charting'">
+            <ti-category-charting [categoryLabel]="category.description + ' (' + category.units + ')'" [dataPoints]="category.dataPoints"></ti-category-charting>
+        </div>
+    </div>
+</div>

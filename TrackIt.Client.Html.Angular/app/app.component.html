@@ -1,0 +1,26 @@
+﻿<!--Top navigation-->
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <!--Collapse button for top navigation in small form factors-->
+    <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        ☰
+    </button>
+    <!--Navigation options-->
+    <a class="navbar-brand" routerLink="/dashboard">TrackIt</a>
+    <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/contact">Contact</a>
+            </li>
+            <li class="nav-item pull-xs-right">
+                <a class="nav-link" href="javascript:void(0)" (click)="signInOut()">{{authenticationCaption}}</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <!--Routed views-->
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="deploy\**" />
+    <Compile Remove="node_modules\**" />
+    <Compile Remove="typings\**" />
+    <EmbeddedResource Remove="deploy\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <EmbeddedResource Remove="typings\**" />
+    <None Remove="deploy\**" />
+    <None Remove="node_modules\**" />
+    <None Remove="typings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="TrackIt.Client.Html.Angular.csproj.vspscc" />
+  </ItemGroup>
+</Project>

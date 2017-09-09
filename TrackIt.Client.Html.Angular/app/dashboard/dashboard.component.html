@@ -1,0 +1,39 @@
+﻿<!--Waiting overlay-->
+<div *ngIf="busy" class="overlay">
+    <!--<i class="fa fa-spinner fa-spin" style="position: absolute; top:30%; left:45%; font-size:96px"></i>-->
+    <i class="fa fa-spinner fa-spin spin-wait"></i>
+</div>
+<!--Primary Dashboard content-->
+<div class="container-fluid" id="main">
+    <div class="row row-offcanvas row-offcanvas-left" [ngClass]="{active: sideNavActive}">
+        <!--Side navigation-->
+        <div class="col-md-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <!--Toolbar-->
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group" role="group">
+                    <button (click)="getCategories()" class="btn btn-primary-outline"><i class="fa fa-refresh"></i></button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button (click)="newCategory()" class="btn btn-primary-outline"><i class="fa fa-plus"></i></button>
+                    <button (click)="deleteCategory()" class="btn btn-primary-outline" [disabled]="!selectedCategory"><i class="fa fa-remove"></i></button>
+                </div>
+            </div>
+            <hr />
+            <!--Categories list-->
+            <ti-category-list [categories]="categoriesInfo" [selectedCategory]="selectedCategory" (selectionChanged)="selectCategory($event)"></ti-category-list>
+        </div>
+        <div class="col-md-9 main">
+            <!--Navigation panel toggle-->
+            <p class="hidden-md-up">
+                <button (click)="toggleSideNav()" class="btn btn-primary-outline btn-sm" data-toggle="offcanvas">
+                    <i class="fa" [ngClass]="{'fa-chevron-left': sideNavActive, 'fa-chevron-right': !sideNavActive}"></i>
+                </button>
+            </p>
+            <div>
+                <h2>{{getCaption()}}</h2>
+            </div>
+            <!--Category view-->
+            <ti-category [category]="selectedCategory" [originalCategory]="selectedCategoryInfo" (categoryEdited)="categoryEdited($event)" (setCategoryBusy)="setBusy($event)" (updateDataPoints)="dataPointsChanged($event)"></ti-category>
+        </div>
+    </div>
+</div>

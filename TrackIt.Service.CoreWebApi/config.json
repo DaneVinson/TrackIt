@@ -1,0 +1,27 @@
+﻿{
+  "appSettings": {
+    "repository": "efcore"
+  },
+  "aad": {
+    "clientId": "{b2c_app_client_id}",
+    "policyId": "{b2c_policy_name}",
+    "tenant": "{b2c_tenant_name}.onmicrosoft.com"
+  },
+  "ConnectionStrings": {
+    "TrackItAlpha": "{alpha_db_connection_string}",
+    "TrackItBravo": "{bravo_db_connection_string}"
+  },
+  "documentDB": {
+    "AccountKey": "{account_key}",
+    "AccountUri": "https://{account_name}.documents.azure.com:443/",
+    "DatabaseName": "{db_name}"
+  },
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  }
+}

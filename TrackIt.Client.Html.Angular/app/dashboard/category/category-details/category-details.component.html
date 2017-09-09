@@ -1,0 +1,24 @@
+﻿<form [formGroup]="viewForm">
+    <!--Button bar-->
+    <div>
+        <button (click)="save()" [disabled]="!viewForm.dirty || (!viewForm.valid && !deleted)" class="btn" [ngClass]="{'btn-primary': !deleted, 'btn-danger': deleted}"><i class="fa fa-save"></i>&nbsp;Save</button>
+        <button (click)="cancel()" [disabled]="!category.deleted && !viewForm.dirty" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp;Cancel</button>
+        <button (click)="delete()" [disabled]="category.deleted || category.new" class="btn btn-danger"><i class="fa fa-remove"></i>&nbsp;Delete</button>
+    </div>
+    <hr />
+    <!--Description-->
+    <div class="form-group col-sm-8 col-lg-5" [ngClass]="{'has-danger': viewForm.controls['description'].invalid}">
+        <label class="form-control-label" for="descriptionInput">Description</label>
+        <input [formControl]="viewForm.controls['description']" class="form-control" type="text" id="descriptionInput" placeholder="{required}" autocomplete="off">
+    </div>
+    <!--Units-->
+    <div class="form-group col-sm-4 col-lg-3" [ngClass]="{'has-danger': viewForm.controls['units'].invalid}">
+        <label class="form-control-label" for="unitsInput">Units</label>
+        <input [formControl]="viewForm.controls['units']" class="form-control" type="text" id="unitsInput" placeholder="{required}" autocomplete="off">
+    </div>
+    <!--Id-->
+    <div class="form-group col-sm-8 col-lg-5">
+        <label for="idInput">Id</label>
+        <input [formControl]="viewForm.controls['id']" class="form-control" type="text" id="idInput">
+    </div>
+</form>

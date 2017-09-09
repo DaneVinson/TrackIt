@@ -1,0 +1,6 @@
+﻿<div *ngIf="!dataPoints || dataPoints.length == 0">
+    No data points loaded. Search for or add or data points under the <i class="fa fa-database"></i> <strong>Data</strong> tab.
+</div>
+<div *ngIf="dataPoints && dataPoints.length > 0">
+    <chart [options]="chartOptions"></chart>
+</div>

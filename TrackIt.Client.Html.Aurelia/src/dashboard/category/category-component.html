@@ -1,0 +1,69 @@
+<template>
+    <div class="header">
+        <h1>${title}</h1>
+    </div>
+    <!--Tabs for Category Details, Data and Charting-->
+    <div class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+                <a click.delegate="setDisplay('Details')" class="pure-menu-link" href="javascript:void(0)">
+                    <i class="fa fa-lg fa-edit"></i>&nbsp;Details
+                </a>
+            </li>
+            <li class="pure-menu-item">
+                <a click.delegate="setDisplay('Data')" class="pure-menu-link" href="javascript:void(0)">
+                    <i class="fa fa-lg fa-database"></i>&nbsp;Data
+                </a>
+            </li>
+            <li class="pure-menu-item">
+                <a click.delegate="setDisplay('Charting')" class="pure-menu-link" href="javascript:void(0)">
+                    <i class="fa fa-lg fa-line-chart"></i>&nbsp;Charting
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--Details-->
+    <div style="margin: 0px 0px 0px 20px" if.bind="selectedDisplayMode == 'Details'">
+        <br>
+        <form class="pure-form pure-form-stacked" autocomplete="off">
+            <fieldset>
+                <!--Toolbar-->
+                <div>
+                    <button click.delegate="save()" class="pure-button ${categoryEntity.deleted ? 'pure-button-error' : 'pure-button-primary'}" disabled.bind="!canSave">
+                        <i class="fa fa-save"></i>&nbsp;Save
+                    </button>
+                    <button click.delegate="cancel()" class="pure-button">
+                        <i class="fa fa-refresh"></i>&nbsp;Cancel
+                    </button>
+                    <button click.delegate="delete()" class="pure-button pure-button-error" disabled.bind="!canDelete">
+                        <i class="fa fa-remove"></i>&nbsp;Delete
+                    </button>
+                </div>
+                <br>
+                <!--Edit controls-->
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-sm-2-5">
+                        <label for="description">Description</label>
+                        <input value.bind="categoryEntity.description" required id="description" class="pure-u-23-24" type="text">
+                    </div>
+                    <div class="pure-u-1 pure-u-sm-2-5">
+                        <label for="units">Units</label>
+                        <input value.bind="categoryEntity.units" required id="units" class="pure-u-23-24" type="text">
+                    </div>
+                    <div class="pure-u-1 pure-u-sm-2-5">
+                        <label for="id">Id</label>
+                        <input value.bind="categoryEntity.id" id="id" class="pure-u-23-24" disabled type="text">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <!--Data-->
+    <div if.bind="selectedDisplayMode == 'Data'">
+        <h3>Data</h3>
+    </div>
+    <!--Charting-->
+    <div if.bind="selectedDisplayMode == 'Charting'">
+        <h3>Charting</h3>
+    </div>
+</template>

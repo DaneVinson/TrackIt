@@ -1,0 +1,36 @@
+<template>
+    <div class="pure-menu">
+        <a class="pure-menu-heading" href="#">TrackIt</a>
+        <ul class="pure-menu-list">
+            <!--Sign in-->
+            <li if.bind="!authenticated" class="pure-menu-item">
+                <a click.delegate="signIn()" href="#" class="pure-menu-link"><i class="fa fa-lg fa-sign-in"></i>&nbsp;&nbsp;Sign In</a>
+            </li>
+            <!--Categories tool bar-->
+            <li if.bind="authenticated" class="pure-menu-item">
+                <button click.delegate="refreshCategories()" class="pure-button"><i class="fa fa-lg fa-refresh"></i></button>
+                <button click.delegate="newCategory()" class="pure-button pure-button-success"><i class="fa fa-lg fa-plus"></i></button>
+                <button click.delegate="deleteCategory()" class="pure-button pure-button-error"><i class="fa fa-lg fa-remove"></i></button>
+            </li>
+            <!--Categories list-->
+            <li if.bind="authenticated" class="pure-menu-item" repeat.for="category of categoryService.categories">
+                <a class="pure-menu-link" route-href="route: dashboard; params.bind: {id:category.id}">
+                    ${category.description}
+                    <i if.bind="category.new || category.dirty || category.deleted" class="fa pull-right fa-save"></i>
+                </a>
+            </li>
+            <!--About-->
+            <li class="pure-menu-item menu-item-divided"><a href="#/about" class="pure-menu-link">
+                <i class="fa fa-lg fa-question-circle"></i>&nbsp;&nbsp;About</a>
+            </li>
+            <!--Contact-->
+            <li class="pure-menu-item"><a href="#/contact" class="pure-menu-link">
+                <i class="fa fa-lg fa-envelope"></i>&nbsp;&nbsp;Contact</a>
+            </li>
+            <!--Sign out-->
+            <li if.bind="authenticated" class="pure-menu-item menu-item-divided">
+                <a click.delegate="signOut()" href="#" class="pure-menu-link"><i class="fa fa-lg fa-sign-out"></i>&nbsp;&nbsp;Sign Out</a>
+            </li>
+        </ul>
+    </div>
+</template>

@@ -1,0 +1,14 @@
+{
+  "development": {
+    "aadPolicy": "b2c_policy_id",
+    "apiUri": "{rest_api_uri}",
+    "authAppId": "{b2c_app_id}",
+    "oauth2Uri": "https://login.microsoftonline.com/{b2c_tenant_name}.onmicrosoft.com/oauth2/v2.0/"
+  },
+  "production": {
+    "aadPolicy": "b2c_policy_id",
+    "apiUri": "{rest_api_uri}",
+    "authAppId": "{b2c_app_id}",
+    "oauth2Uri": "https://login.microsoftonline.com/{b2c_tenant_name}.onmicrosoft.com/oauth2/v2.0/"
+  }
+}
