@@ -1,0 +1,20 @@
+{
+    "appSettings": {
+      "repository": "documentdb"
+    },
+    "aad": {
+      "clientId": "{client_id}",
+      "policyId": "{policy_id}",
+      "tenant": "{tenant}.onmicrosoft.com"
+    },
+    "ConnectionStrings": {
+      "TrackItAlpha": "{alpha_connection_string}",
+      "TrackItBravo": "{bravo_connection_string}"
+    },
+    "documentDB": {
+      "AccountKey": "{account_key}",
+      "AccountUri": "https://{account_name}.documents.azure.com:443/",
+      "DatabaseName": "{database_name}"
+    }
+  }
+  

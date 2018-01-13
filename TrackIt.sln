@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{2380A838-10CD-4903-BB2C-8D125E2BC8E8}"
 EndProject
@@ -40,6 +40,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackIt.Client.Html.Aurelia", "TrackIt.Client.Html.Aurelia\TrackIt.Client.Html.Aurelia.csproj", "{F1006985-B6D0-4137-A713-AAC780C6B5FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackIt.Client.Html.Angular", "TrackIt.Client.Html.Angular\TrackIt.Client.Html.Angular.csproj", "{67883875-E2ED-4149-9DD5-FA59CF7D4A50}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "TrackIt.Service.GiraffeWebApi", "TrackIt.Service.GiraffeWebApi\TrackIt.Service.GiraffeWebApi.fsproj", "{735A7121-9CE2-46DB-8F53-574C15836351}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{67883875-E2ED-4149-9DD5-FA59CF7D4A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67883875-E2ED-4149-9DD5-FA59CF7D4A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67883875-E2ED-4149-9DD5-FA59CF7D4A50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735A7121-9CE2-46DB-8F53-574C15836351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735A7121-9CE2-46DB-8F53-574C15836351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735A7121-9CE2-46DB-8F53-574C15836351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735A7121-9CE2-46DB-8F53-574C15836351}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{CC08A7F4-55CE-45A7-9DCC-E0410CABC4D3} = {F35FC34F-9AEF-4805-988B-9D54B030CABA}
 		{F1006985-B6D0-4137-A713-AAC780C6B5FC} = {2380A838-10CD-4903-BB2C-8D125E2BC8E8}
 		{67883875-E2ED-4149-9DD5-FA59CF7D4A50} = {2380A838-10CD-4903-BB2C-8D125E2BC8E8}
+		{735A7121-9CE2-46DB-8F53-574C15836351} = {232D0E7D-9ADE-4DED-8E4B-ED584D2904BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D809C29C-5A0E-4A73-A63A-40F027868ADC}

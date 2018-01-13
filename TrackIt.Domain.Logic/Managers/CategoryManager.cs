@@ -90,8 +90,9 @@ namespace TrackIt.Domain.Logic.Managers
         {
             // Validate criteria.
             if (dateRangeCriteria == null) { return new Result<Category>() { Message = "Invalid criteria" }; }
-            if (dateRangeCriteria.Value == null) { dateRangeCriteria.Value = new DateRange(); }
-            if (dateRangeCriteria.Value.From > dateRangeCriteria.Value.To) { return new Result<Category>() { Message = "Invalid criteria" }; }
+            if (dateRangeCriteria.Value != null && 
+                dateRangeCriteria.Value.From > dateRangeCriteria.Value.To)
+            { return new Result<Category>() { Message = "Invalid criteria" }; }
 
             // Fetch the Category.
             var category = await Repository.GetAsync(dateRangeCriteria.PrimaryId);
@@ -107,15 +108,18 @@ namespace TrackIt.Domain.Logic.Managers
             result.Value = category;
 
             // Fetch the DataPoints for the Category with DateRange if requested.
-            var dataPointsQuery = ChildRepository.GetQueryable().Where(d => d.CategoryId == category.Id);
-            if (dateRangeCriteria.Value.To > DateTime.MinValue)
+            if (dateRangeCriteria.Value != null)
             {
-                dataPointsQuery = dataPointsQuery.Where(d => d.Stamp >= dateRangeCriteria.Value.From &&
-                                                                d.Stamp <= dateRangeCriteria.Value.To);
+                var dataPointsQuery = ChildRepository.GetQueryable().Where(d => d.CategoryId == category.Id);
+                if (dateRangeCriteria.Value.To > DateTime.MinValue)
+                {
+                    dataPointsQuery = dataPointsQuery.Where(d => d.Stamp >= dateRangeCriteria.Value.From &&
+                                                                    d.Stamp <= dateRangeCriteria.Value.To);
+                }
+                result.Value.DataPoints = (await ChildRepository.GetAsync(dataPointsQuery))?
+                                                                .OrderBy(d => d.Stamp)
+                                                                .ToList();
             }
-            result.Value.DataPoints = (await ChildRepository.GetAsync(dataPointsQuery))?
-                                                            .OrderBy(d => d.Stamp)
-                                                            .ToList();
 
             return result;
         }

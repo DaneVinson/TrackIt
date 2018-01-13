@@ -12,6 +12,7 @@ I've used TrackIt to investigate a number of technologies including but not limi
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Angular](https://angular.io/)
 - [Aurelia](https://aurelia.io/)
+- [Giraffe](https://github.com/giraffe-fsharp/Giraffe)
 - [WebPack 2](https://webpack.js.org/)
 - [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
 - [Pure CSS](https://purecss.io/)

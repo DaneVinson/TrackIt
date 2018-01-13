@@ -14,9 +14,12 @@ namespace TrackIt.Domain.Logic.Managers
     public class DataPointManager : Manager<DataPoint>, IDataPointManager
     {
         public DataPointManager(
-            IRepository<DataPoint> repository) :
+            IRepository<DataPoint> repository,
+            IRepository<Category> parentRepository) :
             base(repository)
-        { }
+        {
+            ParentRepository = parentRepository;
+        }
 
 
         public async Task<Result<EmptyModel>> DeleteAsync(Criteria<IEnumerable<string>> idsCriteria)
@@ -78,6 +81,18 @@ namespace TrackIt.Domain.Logic.Managers
             });
             if (validationErrors.Count > 0) { return new Result<DataPoint[]>() { Message = $"Model validation errors: {String.Join("; ", validationErrors)}" }; }
 
+            // Ensure all CategoryId values are valid.
+            List<Task<Category>> categoryTasks = new List<Task<Category>>();
+            dataPoints.GroupBy(d => d.CategoryId)
+                    .Select(g => g.Key)
+                    .ToList()
+                    .ForEach(id => categoryTasks.Add(ParentRepository.GetAsync(id)));
+            var categories = await Task.WhenAll(categoryTasks);
+            if (categories.Any(c => c == null))
+            {
+                return new Result<DataPoint[]>() { Message = "Data point references missing category." };
+            }
+
             // Get tasks to search for current matching DataPoints then await all.
             List<Task<DataPoint>> tasks = new List<Task<DataPoint>>();
             dataPoints.ForEach(m =>
@@ -119,5 +134,8 @@ namespace TrackIt.Domain.Logic.Managers
             }
             return result;
         }
+
+
+        private readonly IRepository<Category> ParentRepository;
     }
 }
