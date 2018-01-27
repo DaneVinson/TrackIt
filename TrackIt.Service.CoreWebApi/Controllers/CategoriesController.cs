@@ -2,13 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TrackIt.Domain.Model.Base;
 using TrackIt.Domain.Model.Dto;
 using TrackIt.Domain.Model.Interfaces;
 using TrackIt.Domain.Model.Models;
-using TrackIt.Service.CoreWebApi.Criteria;
 
 namespace TrackIt.Service.CoreWebApi.Controllers
 {

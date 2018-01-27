@@ -4,14 +4,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Threading.Tasks;
+using TrackIt.Data.Dapper;
+using TrackIt.Data.DocumentDB;
 using TrackIt.Data.EFCore;
 using TrackIt.Domain.Logic.Managers;
 using TrackIt.Domain.Model.Interfaces;
 using TrackIt.Domain.Model.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using TrackIt.Data.Dapper;
-using TrackIt.Data.DocumentDB;
 
 namespace TrackIt.Service.CoreWebApi
 {
